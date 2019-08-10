@@ -3,12 +3,14 @@ package com.example.dailyshoppinglist;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,7 +27,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private Button reg;
 
     private FirebaseAuth mAuth;
-
+    private ProgressDialog mDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,14 +50,24 @@ public class RegistrationActivity extends AppCompatActivity {
                     pass.setError("Required field ...");
                     return;
                 }
+                mDialog = new ProgressDialog(RegistrationActivity.this);
+                mDialog.setMessage("Processing...");
+                mDialog.show();
 
                 mAuth = FirebaseAuth.getInstance();
                 mAuth.createUserWithEmailAndPassword(mEmail, mPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        Toast.makeText(getApplicationContext(), "Registration Successfull...", Toast.LENGTH_LONG).show();
+                        if (task.isSuccessful()) {
+                            Toast.makeText(getApplicationContext(), "Registration Successful...", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                            mDialog.dismiss();
+                        } else {
+                            Toast.makeText(getApplicationContext(),"Registration Failed ...", Toast.LENGTH_SHORT).show();
+                            mDialog.dismiss();
+                        }
                     }
-                })
+                });
             }
         });
 
