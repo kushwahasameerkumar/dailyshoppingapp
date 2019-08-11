@@ -55,8 +55,8 @@ public class MainActivity extends AppCompatActivity {
 
                 //check for null input
                 if(TextUtils.isEmpty(mEmail) || TextUtils.isEmpty(mPass)){
-                    email.setError("Required field...");
-                    pass.setError("Required field...");
+                    email.setError("Required field");
+                    pass.setError("Required field");
                     return;
                 }
                 mDialog.show();

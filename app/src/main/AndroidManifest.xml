@@ -11,7 +11,9 @@
         android:theme="@style/AppTheme">
         <activity android:name=".HomeActivity"></activity>
         <activity android:name=".RegistrationActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:theme="@style/MyTheme">
+            <!--Hide status bar - MyTheme-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

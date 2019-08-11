@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical"
-    android:background="@drawable/back_design"
+    android:background="@drawable/ed_design"
     android:gravity="center">
 
     <TextView
@@ -59,7 +59,8 @@
         android:gravity="center"
         android:padding="5dp"
         android:background="@drawable/ed_design"
-        android:layout_margin="10dp" />
+        android:layout_margin="10dp"
+        />
 
     <TextView
         android:layout_width="match_parent"

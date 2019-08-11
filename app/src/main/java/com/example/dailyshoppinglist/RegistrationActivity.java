@@ -46,8 +46,8 @@ public class RegistrationActivity extends AppCompatActivity {
                 String mPass = pass.getText().toString().trim();
 
                 if(TextUtils.isEmpty(mEmail) || TextUtils.isEmpty(mPass)){
-                    email.setError("Required field ...");
-                    pass.setError("Required field ...");
+                    email.setError("Required field");
+                    pass.setError("Required field");
                     return;
                 }
                 mDialog = new ProgressDialog(RegistrationActivity.this);
@@ -74,7 +74,7 @@ public class RegistrationActivity extends AppCompatActivity {
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
         });
     }
